@@ -8,7 +8,7 @@ const PROJECT_ROOT = import.meta.dirname;
 
 export default defineConfig({
   base: "/novae-shop/",
-  plugins: [react(), tailwindcss(), jsxLocPlugin()],
+  plugins: [react()],
 
   resolve: {
     alias: {

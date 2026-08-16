@@ -7,9 +7,8 @@ import { defineConfig } from "vite";
 const PROJECT_ROOT = import.meta.dirname;
 
 export default defineConfig({
-  base: "/novae-shop/",
+  base: '/novae-shop/',
   plugins: [react()],
-
   resolve: {
     alias: {
       "@": path.resolve(PROJECT_ROOT, "client", "src"),

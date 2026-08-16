@@ -1,0 +1,8 @@
+/** NOVAÉ Sessiz Atelier: kaydedilen parçalar için geniş boşluklu, karar vermeye elverişli bir seçim alanı. */
+import { ArrowRight, Heart } from "lucide-react";
+import { Link } from "wouter";
+import { ProductCard } from "@/components/ProductCard";
+import { products } from "@/data/products";
+import { useStore } from "@/contexts/StoreContext";
+
+export default function Favorites() { const {favorites}=useStore(); const saved=products.filter(p=>favorites.includes(p.id)); return <div className="container py-12 md:py-16"><p className="eyebrow">Kişisel arşiv</p><div className="mt-2 flex flex-col justify-between gap-4 border-b border-stone-300 pb-7 sm:flex-row sm:items-end"><div><h1 className="text-6xl leading-none md:text-7xl">Kaydedilen <i>parçalar.</i></h1><p className="mt-4 text-sm text-stone-600">{saved.length ? `${saved.length} parça sonra dönmeniz için ayrıldı.` : "Beğendiğiniz parçaları buraya ayırabilirsiniz."}</p></div>{saved.length>0&&<Link href="/shop" className="editorial-link">Koleksiyonu sürdür <ArrowRight size={15}/></Link>}</div>{saved.length?<div className="mt-9 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 lg:grid-cols-4 md:gap-x-6">{saved.map(p=><ProductCard key={p.id} product={p}/>)}</div>:<div className="grid min-h-[470px] place-items-center text-center"><div><Heart className="mx-auto text-[#849486]" size={36} strokeWidth={1.25}/><h2 className="mt-5 text-4xl">Burayı size ait yapın.</h2><p className="mt-3 max-w-sm text-sm leading-6 text-stone-500">Bir ürün kartındaki kalp işaretine dokunarak, geri dönmek istediğiniz parçaları kaydedin.</p><Link href="/shop" className="quiet-button mt-7">Koleksiyonu keşfet <ArrowRight size={15}/></Link></div></div>}</div>; }
